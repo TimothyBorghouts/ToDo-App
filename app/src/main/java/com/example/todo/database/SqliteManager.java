@@ -9,6 +9,11 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.todo.model.TodoItem;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class SqliteManager extends SQLiteOpenHelper {
 
     public static final String tag = "SqliteManager";
@@ -43,30 +48,30 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
     /* Method to insert a to-do item into the Sqlite database */
-    public void insert(String title, String description, int priority, String due_date, String notes) {
+    public void insert(TodoItem todoItem) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", title);
-        contentValues.put("description", description);
-        contentValues.put("priority", priority);
-        contentValues.put("due_date", due_date);
-        contentValues.put("notes", notes);
+        contentValues.put("title", todoItem.getTitle());
+        contentValues.put("description", todoItem.getDescription());
+        contentValues.put("priority", todoItem.getPriority());
+        contentValues.put("due_date", todoItem.getDueDate());
+        contentValues.put("notes", todoItem.getNotes());
 
         sqLiteDatabase.insert("todo_items", null, contentValues);
         Log.i(tag, " inserted item into database");
     }
 
     /* Method to update an existing to-do item within the Sqlite database by searching it on the id*/
-    public void update(String id, String title, String description, int priority, String due_date, String notes) {
+    public void update(String id, TodoItem todoItem ) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", title);
-        contentValues.put("description", description);
-        contentValues.put("priority", priority);
-        contentValues.put("due_date", due_date);
-        contentValues.put("notes", notes);
+        contentValues.put("title", todoItem.getTitle());
+        contentValues.put("description", todoItem.getDescription());
+        contentValues.put("priority", todoItem.getPriority());
+        contentValues.put("due_date", todoItem.getDueDate());
+        contentValues.put("notes", todoItem.getNotes());
 
         sqLiteDatabase.update("todo_items", contentValues, "id = ?", new String[]{id});
         Log.i(tag, " updated item from database");
@@ -80,10 +85,11 @@ public class SqliteManager extends SQLiteOpenHelper {
         Log.i(tag, " delete item from database");
     }
 
-    /*Method to get al existing to-do items from the sqlite database and returning them in a cursor*/
-    public Cursor getAll() {
+    /*Method to get al existing to-do items from the sqlite database and returning them in an arraylist*/
+    public ArrayList<TodoItem> getAll() {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String getAllQuery = "SELECT * FROM todo_items;\n";
+        ArrayList<TodoItem> todoItems = null;
 
         Cursor cursor = null;
         if (sqLiteDatabase != null) {
@@ -92,7 +98,17 @@ public class SqliteManager extends SQLiteOpenHelper {
             Log.e(tag, " database is empty or not created so couldn't receive data");
         }
 
+        while (cursor.moveToNext()){
+            int id = Integer.parseInt(cursor.getString(0));
+            String title = cursor.getString(1);
+            String description = cursor.getString(2);
+            int priority = Integer.parseInt(cursor.getString(3));
+            String due_date = cursor.getString(4);
+            String notes = cursor.getString(5);
+            todoItems.add(new TodoItem(id, title, description, priority, due_date, notes));
+        }
+
         Log.i(tag, " received all items from database");
-        return cursor;
+        return todoItems;
     }
 }
