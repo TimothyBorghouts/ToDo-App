@@ -8,17 +8,12 @@ public class TodoItem {
     private String dueDate;
     private String notes;
 
-    public TodoItem(int id, String title, String description, int priority, String dueDate, String notes) {
-        this.id = id;
+    public TodoItem(String title, String description, int priority, String dueDate, String notes) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.dueDate = dueDate;
         this.notes = notes;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTitle() {
@@ -39,10 +34,6 @@ public class TodoItem {
 
     public String getNotes() {
         return notes;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setTitle(String title) {

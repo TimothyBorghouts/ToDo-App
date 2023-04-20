@@ -99,13 +99,12 @@ public class SqliteManager extends SQLiteOpenHelper {
         }
 
         while (cursor.moveToNext()){
-            int id = Integer.parseInt(cursor.getString(0));
             String title = cursor.getString(1);
             String description = cursor.getString(2);
             int priority = Integer.parseInt(cursor.getString(3));
             String due_date = cursor.getString(4);
             String notes = cursor.getString(5);
-            todoItems.add(new TodoItem(id, title, description, priority, due_date, notes));
+            todoItems.add(new TodoItem(title, description, priority, due_date, notes));
         }
 
         Log.i(tag, " received all items from database");

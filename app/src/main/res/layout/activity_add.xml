@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/title_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:inputType="text"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/description_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="text"
+        android:maxLines="4" />
+
+    <Spinner
+        android:id="@+id/priority_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <DatePicker
+        android:id="@+id/due_datepicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        android:calendarTextColor="@color/black"
+        android:headerBackground="@color/black"
+        android:datePickerMode="calendar"
+        android:colorControlActivated="@color/black"
+        android:calendarViewShown="false"
+        android:spinnersShown="false" />
+
+    <EditText
+        android:id="@+id/notes_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Notes"
+        android:inputType="text"
+        android:maxLines="4" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create" />
+
+</LinearLayout>
