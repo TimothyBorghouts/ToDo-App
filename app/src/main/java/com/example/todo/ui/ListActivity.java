@@ -47,8 +47,8 @@ public class ListActivity extends AppCompatActivity {
         });
 
         sqliteManager = new SqliteManager(this);
-        //todoItems = sqliteManager.getAll();
-        TodoItem newTodoItem = new TodoItem("titeltje", "beschrijvinkje", 2, "23/02/2334", "Dit zijn mijn notities");
+        todoItems = sqliteManager.getAll();
+        TodoItem newTodoItem = new TodoItem("titeltje", "beschrijvinkje","23/02/2334", "Dit zijn mijn notities");
         todoItems.add(newTodoItem);
 
         recyclerviewAdapter = new RecyclerviewAdapter(todoItems);
