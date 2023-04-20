@@ -1,6 +1,8 @@
 package com.example.todo.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.todo.R;
+import com.example.todo.adapter.RecyclerviewAdapter;
 import com.example.todo.database.SqliteManager;
 import com.example.todo.model.TodoItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,6 +23,8 @@ public class ListActivity extends AppCompatActivity {
     public static final String tag = "ListActivity";
 
     RecyclerView recyclerView;
+    RecyclerviewAdapter recyclerviewAdapter;
+
     FloatingActionButton addButton;
 
     SqliteManager sqliteManager;
@@ -29,8 +34,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-        sqliteManager = new SqliteManager(this);
 
         recyclerView = findViewById(R.id.recyclerview);
         addButton = findViewById(R.id.addButton);
@@ -43,6 +46,15 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        sqliteManager = new SqliteManager(this);
         //todoItems = sqliteManager.getAll();
+        TodoItem newTodoItem = new TodoItem("titeltje", "beschrijvinkje", 2, "23/02/2334", "Dit zijn mijn notities");
+        todoItems.add(newTodoItem);
+
+        recyclerviewAdapter = new RecyclerviewAdapter(todoItems);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(recyclerviewAdapter);
     }
 }
