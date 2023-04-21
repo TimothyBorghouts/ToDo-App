@@ -39,7 +39,7 @@ public class DeleteActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DeleteActivity.this, UpdateActivity.class);
+                Intent intent = new Intent(DeleteActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });

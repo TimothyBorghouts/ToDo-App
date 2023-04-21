@@ -28,10 +28,9 @@
         android:layout_marginTop="8dp"
         android:scaleY="0.8"
         android:scaleX="0.8"
-        android:calendarTextColor="@color/black"
-        android:headerBackground="@color/black"
+        android:headerBackground="@color/brown"
         android:datePickerMode="calendar"
-        android:colorControlActivated="@color/black"
+        android:colorControlActivated="@color/brown"
         android:calendarViewShown="false"
         android:spinnersShown="false" />
 
@@ -47,6 +46,7 @@
         android:id="@+id/createButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create" />
+        android:text="Create"
+        style="@style/button_style"/>
 
 </LinearLayout>

@@ -28,10 +28,9 @@
         android:layout_height="wrap_content"
         android:scaleY="0.8"
         android:scaleX="0.8"
-        android:calendarTextColor="@color/black"
-        android:headerBackground="@color/black"
+        android:headerBackground="@color/brown"
         android:datePickerMode="calendar"
-        android:colorControlActivated="@color/black"
+        android:colorControlActivated="@color/brown"
         android:calendarViewShown="false"
         android:spinnersShown="false" />
 
@@ -47,7 +46,8 @@
         android:id="@+id/update_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:text="Update"
+        style="@style/button_style"/>
 
     <Button
         android:id="@+id/delete_button"
@@ -56,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:drawableStart="@drawable/ic_delete"
         android:drawableTint="@color/white"
-        android:gravity="center"
-        android:text="Delete" />
+        android:text="Delete"
+        style="@style/button_style"/>
 
 </LinearLayout>

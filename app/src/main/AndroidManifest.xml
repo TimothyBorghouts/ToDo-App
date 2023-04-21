@@ -14,7 +14,7 @@
         <activity
             android:name=".ui.ListActivity"
             android:exported="true"
-            android:label="To do items">
+            android:label="To do">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
