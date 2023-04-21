@@ -7,6 +7,14 @@ public class TodoItem {
     private String dueDate;
     private String notes;
 
+    public TodoItem(String id, String title, String description, String dueDate, String notes) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.notes = notes;
+    }
+
     public TodoItem(String title, String description, String dueDate, String notes) {
         this.title = title;
         this.description = description;
@@ -14,7 +22,7 @@ public class TodoItem {
         this.notes = notes;
     }
 
-    public String getInt() {return id;}
+    public String getId() {return id;}
 
     public String getTitle() {
         return title;

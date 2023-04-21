@@ -22,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="Create a new To Do item"
             android:name=".ui.AddActivity"
+            android:exported="false"
+            android:label="Create a new To Do item"
+            android:parentActivityName=".ui.ListActivity" />
+        <activity
+            android:name=".ui.UpdateActivity"
             android:parentActivityName=".ui.ListActivity"
             android:exported="false" />
     </application>

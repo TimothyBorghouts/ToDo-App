@@ -47,11 +47,10 @@ public class ListActivity extends AppCompatActivity {
         });
 
         sqliteManager = new SqliteManager(this);
+        todoItems = new ArrayList<>();
         todoItems = sqliteManager.getAll();
-        TodoItem newTodoItem = new TodoItem("titeltje", "beschrijvinkje","23/02/2334", "Dit zijn mijn notities");
-        todoItems.add(newTodoItem);
 
-        recyclerviewAdapter = new RecyclerviewAdapter(todoItems);
+        recyclerviewAdapter = new RecyclerviewAdapter(todoItems, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
