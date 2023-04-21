@@ -28,8 +28,12 @@
             android:parentActivityName=".ui.ListActivity" />
         <activity
             android:name=".ui.UpdateActivity"
-            android:parentActivityName=".ui.ListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.ListActivity" />
+        <activity
+            android:name=".ui.DeleteActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.UpdateActivity"/>
     </application>
 
 </manifest>

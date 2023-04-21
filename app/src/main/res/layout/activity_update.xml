@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:gravity="center_horizontal">
 
     <EditText
         android:id="@+id/title_update_edittext"
@@ -25,7 +26,6 @@
         android:id="@+id/due_update_datepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:scaleY="0.8"
         android:scaleX="0.8"
         android:calendarTextColor="@color/black"
@@ -48,5 +48,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_delete"
+        android:drawableTint="@color/white"
+        android:gravity="center"
+        android:text="Delete" />
 
 </LinearLayout>

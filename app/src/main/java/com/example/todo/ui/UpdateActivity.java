@@ -24,6 +24,7 @@ public class UpdateActivity extends AppCompatActivity {
     private DatePicker dueUpdateDatePicker;
     private EditText notesUpdateEditText;
     private Button updateButton;
+    private Button deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,16 @@ public class UpdateActivity extends AppCompatActivity {
                 Intent intent = new Intent(UpdateActivity.this, ListActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        deleteButton = findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UpdateActivity.this, DeleteActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
