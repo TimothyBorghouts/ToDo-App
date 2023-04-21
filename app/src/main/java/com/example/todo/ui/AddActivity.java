@@ -1,14 +1,12 @@
 package com.example.todo.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todo.R;
 import com.example.todo.database.SqliteManager;
@@ -20,7 +18,8 @@ public class AddActivity extends AppCompatActivity {
     private EditText descriptionEditText;
     private DatePicker dueDatePicker;
     private EditText notesEditText;
-    private Button createButton;
+
+    SqliteManager sqliteManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +31,11 @@ public class AddActivity extends AppCompatActivity {
         dueDatePicker = findViewById(R.id.due_datepicker);
         notesEditText = findViewById(R.id.notes_edittext);
 
-        createButton = findViewById(R.id.createButton);
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveItem();
-                Intent intent = new Intent(AddActivity.this, ListActivity.class);
-                startActivity(intent);
-            }
+        Button createButton = findViewById(R.id.createButton);
+        createButton.setOnClickListener(v -> {
+            saveItem();
+            Intent intent = new Intent(AddActivity.this, ListActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -53,7 +49,7 @@ public class AddActivity extends AppCompatActivity {
         String notes = notesEditText.getText().toString();
 
         TodoItem newTodoItem = new TodoItem(title, description, dueDate, notes);
-        SqliteManager sqliteManager = new SqliteManager(this);
+        sqliteManager = new SqliteManager(this);
         sqliteManager.insert(newTodoItem);
     }
 }

@@ -18,15 +18,15 @@ import com.example.todo.ui.UpdateActivity;
 import java.util.ArrayList;
 
 public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder> {
-    private ArrayList<TodoItem> todoItems;
-    private Context context;
+    private final ArrayList<TodoItem> todoItems;
+    private final Context context;
 
-    public RecyclerviewAdapter(ArrayList<TodoItem> todoItems, Context context){
+    public RecyclerviewAdapter(ArrayList<TodoItem> todoItems, Context context) {
         this.todoItems = todoItems;
         this.context = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description, dueDate;
         LinearLayout recyclerview_layout;
 
@@ -43,8 +43,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     @Override
     public RecyclerviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -54,7 +53,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
 
         holder.title.setText(item.getTitle());
 
-        if(item.getDescription().length() >= 40){
+        if (item.getDescription().length() >= 40) {
             String smallDescription = item.getDescription().substring(0, 37) + "...";
             holder.description.setText(smallDescription);
         } else {
@@ -63,18 +62,15 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
 
         holder.dueDate.setText(item.getDueDate());
 
-        holder.recyclerview_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateActivity.class);
+        holder.recyclerview_layout.setOnClickListener(view -> {
+            Intent intent = new Intent(context, UpdateActivity.class);
 
-                intent.putExtra("id", item.getId());
-                intent.putExtra("title", item.getTitle());
-                intent.putExtra("description", item.getDescription());
-                intent.putExtra("dueDate", item.getDueDate());
-                intent.putExtra("notes", item.getNotes());
-                context.startActivity(intent);
-            }
+            intent.putExtra("id", item.getId());
+            intent.putExtra("title", item.getTitle());
+            intent.putExtra("description", item.getDescription());
+            intent.putExtra("dueDate", item.getDueDate());
+            intent.putExtra("notes", item.getNotes());
+            context.startActivity(intent);
         });
     }
 

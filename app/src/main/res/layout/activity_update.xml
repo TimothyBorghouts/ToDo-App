@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/title_update_edittext"
@@ -26,12 +26,12 @@
         android:id="@+id/due_update_datepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleY="0.8"
-        android:scaleX="0.8"
-        android:headerBackground="@color/brown"
-        android:datePickerMode="calendar"
-        android:colorControlActivated="@color/brown"
         android:calendarViewShown="false"
+        android:colorControlActivated="@color/brown"
+        android:datePickerMode="calendar"
+        android:headerBackground="@color/brown"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         android:spinnersShown="false" />
 
     <EditText
@@ -44,19 +44,19 @@
 
     <Button
         android:id="@+id/update_button"
+        style="@style/button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update"
-        style="@style/button_style"/>
+        android:text="Update" />
 
     <Button
         android:id="@+id/delete_button"
+        style="@style/button_style"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableStart="@drawable/ic_delete"
         android:drawableTint="@color/white"
-        android:text="Delete"
-        style="@style/button_style"/>
+        android:text="Delete" />
 
 </LinearLayout>

@@ -1,14 +1,13 @@
 package com.example.todo.ui;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todo.R;
 import com.example.todo.database.SqliteManager;
@@ -16,15 +15,13 @@ import com.example.todo.model.TodoItem;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    SqliteManager sqliteManager;
-
     String id, title, description, dueDate, notes;
     private EditText titleUpdateEditText;
     private EditText descriptionUpdateEditText;
     private DatePicker dueUpdateDatePicker;
     private EditText notesUpdateEditText;
-    private Button updateButton;
-    private Button deleteButton;
+
+    SqliteManager sqliteManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,39 +36,35 @@ public class UpdateActivity extends AppCompatActivity {
         getIntentData();
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(title);
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+        }
 
-        updateButton = findViewById(R.id.update_button);
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String title = titleUpdateEditText.getText().toString().trim();
-                String description = descriptionUpdateEditText.getText().toString().trim();
-                int year = dueUpdateDatePicker.getYear();
-                int month = dueUpdateDatePicker.getMonth() + 1;
-                int day = dueUpdateDatePicker.getDayOfMonth();
-                String dueDate = year + "-" + month + "-" + day;
-                String notes = notesUpdateEditText.getText().toString().trim();
+        Button updateButton = findViewById(R.id.update_button);
+        updateButton.setOnClickListener(view -> {
+            String title = titleUpdateEditText.getText().toString().trim();
+            String description = descriptionUpdateEditText.getText().toString().trim();
+            int year = dueUpdateDatePicker.getYear();
+            int month = dueUpdateDatePicker.getMonth() + 1;
+            int day = dueUpdateDatePicker.getDayOfMonth();
+            String dueDate = year + "-" + month + "-" + day;
+            String notes = notesUpdateEditText.getText().toString().trim();
 
-                TodoItem updatedToDoItem = new TodoItem(title, description, dueDate, notes);
+            TodoItem updatedToDoItem = new TodoItem(title, description, dueDate, notes);
 
-                sqliteManager = new SqliteManager(getApplicationContext());
-                sqliteManager.update(getIntent().getStringExtra("id"), updatedToDoItem);
+            sqliteManager = new SqliteManager(getApplicationContext());
+            sqliteManager.update(getIntent().getStringExtra("id"), updatedToDoItem);
 
-                Intent intent = new Intent(UpdateActivity.this, ListActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(UpdateActivity.this, ListActivity.class);
+            startActivity(intent);
 
-            }
         });
 
-        deleteButton = findViewById(R.id.delete_button);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UpdateActivity.this, DeleteActivity.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
-            }
+        Button deleteButton = findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(v -> {
+            Intent intent = new Intent(UpdateActivity.this, DeleteActivity.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
         });
     }
 
@@ -83,10 +76,10 @@ public class UpdateActivity extends AppCompatActivity {
             dueDate = getIntent().getStringExtra("dueDate");
             notes = getIntent().getStringExtra("notes");
 
-            String[] dayMonthyear = dueDate.split("-");
-            int year = Integer.parseInt(dayMonthyear[0]);
-            int month = Integer.parseInt(dayMonthyear[1]) - 1;
-            int day = Integer.parseInt(dayMonthyear[2]);
+            String[] dayMonthYear = dueDate.split("-");
+            int year = Integer.parseInt(dayMonthYear[0]);
+            int month = Integer.parseInt(dayMonthYear[1]) - 1;
+            int day = Integer.parseInt(dayMonthYear[2]);
 
             titleUpdateEditText.setText(title);
             descriptionUpdateEditText.setText(description);

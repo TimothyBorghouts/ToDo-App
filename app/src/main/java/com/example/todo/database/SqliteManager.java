@@ -61,14 +61,14 @@ public class SqliteManager extends SQLiteOpenHelper {
 
             sqLiteDatabase.insert(tableName, null, contentValues);
             Log.i(tag, " inserted item into database");
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             Log.i(tag, "" + exception);
         }
 
     }
 
     /* Method to update an existing to-do item within the Sqlite database by searching it on the id*/
-    public void update(String id, TodoItem todoItem ) {
+    public void update(String id, TodoItem todoItem) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         String title = todoItem.getTitle();
@@ -86,7 +86,7 @@ public class SqliteManager extends SQLiteOpenHelper {
             Log.i(tag, " updated item from database" + id);
             sqLiteDatabase.update(tableName, contentValues, "id = ?", new String[]{id});
 
-        }catch (Exception exception){
+        } catch (Exception exception) {
             Log.i(tag, "" + exception);
         }
 
@@ -119,7 +119,7 @@ public class SqliteManager extends SQLiteOpenHelper {
             Log.e(tag, " database is empty or not created so couldn't receive data");
         }
 
-        while (cursor.moveToNext()){
+        while (cursor != null && cursor.moveToNext()) {
             String id = cursor.getString(0);
             String title = cursor.getString(1);
             String description = cursor.getString(2);
@@ -129,6 +129,10 @@ public class SqliteManager extends SQLiteOpenHelper {
             TodoItem newTodoItem = new TodoItem(id, title, description, due_date, notes);
             loadedTodoItems.add(newTodoItem);
             Log.i(tag, " received item from database: " + newTodoItem.getTitle());
+        }
+
+        if (cursor != null) {
+            cursor.close();
         }
 
         Log.i(tag, " received all items from database");

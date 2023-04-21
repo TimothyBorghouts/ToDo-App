@@ -1,16 +1,15 @@
 package com.example.todo.ui;
 
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.example.todo.R;
 import com.example.todo.adapter.RecyclerviewAdapter;
@@ -39,13 +38,10 @@ public class ListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         addButton = findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(tag, " Clicked on add button and go to Add Activity");
-                Intent intent = new Intent(ListActivity.this, AddActivity.class);
-                startActivity(intent);
-            }
+        addButton.setOnClickListener(view -> {
+            Log.i(tag, " Clicked on add button and go to Add Activity");
+            Intent intent = new Intent(ListActivity.this, AddActivity.class);
+            startActivity(intent);
         });
 
         sqliteManager = new SqliteManager(this);

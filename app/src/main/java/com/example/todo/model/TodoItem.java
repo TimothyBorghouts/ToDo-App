@@ -2,10 +2,10 @@ package com.example.todo.model;
 
 public class TodoItem {
     private String id;
-    private String title;
-    private String description;
-    private String dueDate;
-    private String notes;
+    private final String title;
+    private final String description;
+    private final String dueDate;
+    private final String notes;
 
     public TodoItem(String id, String title, String description, String dueDate, String notes) {
         this.id = id;
@@ -22,7 +22,9 @@ public class TodoItem {
         this.notes = notes;
     }
 
-    public String getId() {return id;}
+    public String getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
@@ -38,21 +40,5 @@ public class TodoItem {
 
     public String getNotes() {
         return notes;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 }
