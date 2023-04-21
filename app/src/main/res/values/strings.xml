@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="to_do_item_title">To-Do Item Title</string>
+    <string name="to_do_item_description">To-Do Item Description</string>
+    <string name="to_do_item_due_date">To-Do Item Due Date</string>
+    <string name="todo">TODO</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="notes">Notes</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
 </resources>

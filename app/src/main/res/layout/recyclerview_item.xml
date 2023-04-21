@@ -24,7 +24,7 @@
                 android:id="@+id/title_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="To-Do Item Title"
+                android:text="@string/to_do_item_title"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -33,7 +33,7 @@
                 android:id="@+id/description_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="To-Do Item Description"
+                android:text="@string/to_do_item_description"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/duedate_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="To-Do Item Due Date"
+                android:text="@string/to_do_item_due_date"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
