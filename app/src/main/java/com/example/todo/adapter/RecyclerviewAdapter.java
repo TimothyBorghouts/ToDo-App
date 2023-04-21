@@ -51,8 +51,16 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         TodoItem item = todoItems.get(position);
+
         holder.title.setText(item.getTitle());
-        holder.description.setText(item.getDescription());
+
+        if(item.getDescription().length() >= 40){
+            String smallDescription = item.getDescription().substring(0, 37) + "...";
+            holder.description.setText(smallDescription);
+        } else {
+            holder.description.setText(item.getDescription());
+        }
+
         holder.dueDate.setText(item.getDueDate());
 
         holder.recyclerview_layout.setOnClickListener(new View.OnClickListener() {

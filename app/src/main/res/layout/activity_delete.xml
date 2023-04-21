@@ -20,25 +20,23 @@
 
     <Button
         android:id="@+id/delete_button"
+        style="@style/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/button_style"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/cancel_button"
-        android:text="Cancel"
-        android:layout_height="wrap_content"
+        style="@style/button_style"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/button_style" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
